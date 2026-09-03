@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +46,7 @@
 
     .brightness-slider {
       position: relative;
-
       width: min(300px, 80vw);
-
       text-align: center;
     }
 
@@ -57,7 +55,6 @@
 
       font-size: 34px;
       font-weight: 900;
-
       letter-spacing: 1px;
 
       -webkit-text-stroke: 2px black;
@@ -66,22 +63,20 @@
         2px 3px 0 black;
 
       pointer-events: none;
-
       user-select: none;
     }
 
     input[type="range"] {
       position: absolute;
-
       z-index: 2;
 
       left: 0;
       top: 50%;
 
       width: 100%;
+      height: 48px;
 
       margin: 0;
-
       transform: translateY(-50%);
 
       appearance: none;
@@ -89,18 +84,18 @@
 
       background: transparent;
 
-      cursor: pointer;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     input[type="range"]::-webkit-slider-runnable-track {
       height: 45px;
-
       background: transparent;
     }
 
     input[type="range"]::-moz-range-track {
       height: 45px;
-
       background: transparent;
     }
 
@@ -132,7 +127,6 @@
 <body>
 
   <main class="page">
-
     <div class="brightness-slider">
 
       <div class="word">
@@ -149,7 +143,6 @@
       >
 
     </div>
-
   </main>
 
   <script>
