@@ -1,9 +1,8 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Home Car Clean</title>
 
   <style>
@@ -20,142 +19,10 @@
 
     body {
       min-height: 100vh;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
       background: rgb(128, 128, 128);
-
-      font-family:
-        "Arial Rounded MT Bold",
-        Arial,
-        sans-serif;
-    }
-
-    .page {
-      width: 100%;
-      min-height: 100vh;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      padding: 24px;
-    }
-
-    .brightness-slider {
-      position: relative;
-      width: min(300px, 80vw);
-      text-align: center;
-    }
-
-    .word {
-      color: white;
-
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: 1px;
-
-      -webkit-text-stroke: 2px black;
-
-      text-shadow:
-        2px 3px 0 black;
-
-      pointer-events: none;
-      user-select: none;
-    }
-
-    input[type="range"] {
-      position: absolute;
-      z-index: 2;
-
-      left: 0;
-      top: 50%;
-
-      width: 100%;
-      height: 48px;
-
-      margin: 0;
-      transform: translateY(-50%);
-
-      appearance: none;
-      -webkit-appearance: none;
-
-      background: transparent;
-
-      touch-action: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-
-    input[type="range"]::-webkit-slider-runnable-track {
-      height: 45px;
-      background: transparent;
-    }
-
-    input[type="range"]::-moz-range-track {
-      height: 45px;
-      background: transparent;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      appearance: none;
-      -webkit-appearance: none;
-
-      width: 5px;
-      height: 48px;
-
-      background: white;
-
-      border: 2px solid black;
-      border-radius: 999px;
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      width: 5px;
-      height: 48px;
-
-      background: white;
-
-      border: 2px solid black;
-      border-radius: 999px;
     }
   </style>
 </head>
 
-<body>
-
-  <main class="page">
-    <div class="brightness-slider">
-
-      <div class="word">
-        BRIGHTNESS
-      </div>
-
-      <input
-        id="brightness"
-        type="range"
-        min="0"
-        max="255"
-        value="128"
-        aria-label="Brightness"
-      >
-
-    </div>
-  </main>
-
-  <script>
-    const brightness =
-      document.getElementById("brightness");
-
-    brightness.addEventListener("input", () => {
-      const value = brightness.value;
-
-      document.body.style.background =
-        `rgb(${value}, ${value}, ${value})`;
-    });
-  </script>
-
-</body>
+<body></body>
 </html>
