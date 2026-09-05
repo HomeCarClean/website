@@ -5,19 +5,21 @@ if (wheel) {
   const spokeStep = 30;
 
   const tapLayer = document.createElement('div');
-
-  Object.assign(tapLayer.style, {
-    position: 'absolute',
-    width: '100vh',
-    height: '100vh',
-    right: '-50vh',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    cursor: 'pointer',
-    WebkitTapHighlightColor: 'transparent',
-    touchAction: 'manipulation',
-    background: 'transparent',
-    zIndex: '2'
+Object.assign(tapLayer.style, {
+  position: 'absolute',
+  width: '100vh',
+  height: '100vh',
+  right: '-50vh',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  cursor: 'pointer',
+  WebkitTapHighlightColor: 'transparent',
+  WebkitTouchCallout: 'none',
+  WebkitUserSelect: 'none',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  background: 'transparent',
+  zIndex: '2'
   });
 
   wheel.style.transition = 'transform 0.4s ease';
