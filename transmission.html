@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PRND Selector</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #111;
+    }
+
+    .gear-selector {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      width: 66px;
+      padding: 4px;
+
+      background: #050505;
+
+      border: 2px solid #aaa;
+      border-radius: 10px;
+
+      box-shadow:
+        inset 0 0 0 1px #333,
+        0 0 0 1px #555;
+
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* SEPARATOR LINES BEHIND HIGHLIGHT */
+    .separator {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+
+      height: 1px;
+
+      background: #2f2f2f;
+
+      z-index: 0;
+    }
+
+    .separator.one {
+      top: 60px;
+    }
+
+    .separator.two {
+      top: 116px;
+    }
+
+    .separator.three {
+      top: 172px;
+    }
+
+    .gear-highlight {
+      position: absolute;
+
+      left: 4px;
+      top: 4px;
+
+      width: calc(100% - 8px);
+      height: 56px;
+
+      border: 1px solid #ddd;
+      border-radius: 6px;
+
+      background: #1c1c1c;
+
+      box-shadow:
+        inset 0 0 8px rgba(255,255,255,.08),
+        0 0 8px rgba(255,255,255,.18);
+
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease;
+
+      z-index: 1;
+    }
+
+    .gear {
+      position: relative;
+      z-index: 2;
+
+      height: 56px;
+
+      display: grid;
+      place-items: center;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 27px;
+      font-weight: 600;
+
+      color: #666;
+
+      pointer-events: none;
+
+      transition: color .28s ease;
+    }
+
+    .gear.active {
+      color: #fff;
+    }
+
+    .gear-selector:active {
+      transform: scale(.98);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="gear-selector">
+
+    <div class="separator one"></div>
+    <div class="separator two"></div>
+    <div class="separator three"></div>
+
+    <div class="gear-highlight"></div>
+
+    <div class="gear active">P</div>
+    <div class="gear">R</div>
+    <div class="gear">N</div>
+    <div class="gear">D</div>
+
+  </div>
+
+  <script>
+    const selector = document.querySelector('.gear-selector');
+    const gears = document.querySelectorAll('.gear');
+    const highlight = document.querySelector('.gear-highlight');
+
+    let currentIndex = 0;
+
+    selector.addEventListener('click', () => {
+
+      currentIndex++;
+
+      if (currentIndex >= gears.length) {
+        currentIndex = 0;
+      }
+
+      gears.forEach(g => {
+        g.classList.remove('active');
+      });
+
+      gears[currentIndex].classList.add('active');
+
+      highlight.style.transform =
+        `translateY(${currentIndex * 56}px)`;
+
+    });
+  </script>
+
+</body>
+</html>
