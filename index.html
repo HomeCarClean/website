@@ -32,42 +32,75 @@
       overflow: hidden;
     }
 
-.wheel-frame {
-  position: absolute;
-  width: 100vh;
-  height: 100vh;
-right: -46vh;
-top: 53%;
-  transform: translateY(-50%);
-  border: 0;
-  background: transparent;
-  display: block;
-}
+    /* TRANSMISSION BEHIND WHEEL */
+    .transmission-frame {
+      position: absolute;
 
-.wheel-image {
-  width: 100%;
-  height: 100%;
-  display: block;
+      left: 7vw;
+      top: 50%;
 
-  pointer-events: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
+      width: 90px;
+      height: 320px;
+
+      transform: translateY(-50%);
+
+      border: 0;
+      background: transparent;
+
+      z-index: 1;
+    }
+
+    /* WHEEL IN FRONT */
+    .wheel-frame {
+      position: absolute;
+
+      width: 100vh;
+      height: 100vh;
+
+      right: -46vh;
+      top: 53%;
+
+      transform: translateY(-50%);
+
+      border: 0;
+      background: transparent;
+      display: block;
+
+      z-index: 2;
+    }
+
+    .wheel-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      pointer-events: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
   </style>
 </head>
 
 <body>
 
-<main class="wheel-area">
-  <div class="wheel-frame">
-    <img
-      class="wheel-image"
-      src="9C8078D5-C511-44E8-BB03-04B5A167A759.png"
-      alt=""
-      draggable="false">
-  </div>
-</main>
+  <main class="wheel-area">
+
+    <iframe
+      class="transmission-frame"
+      src="transmission.html"
+      title="Transmission Selector">
+    </iframe>
+
+    <div class="wheel-frame">
+      <img
+        class="wheel-image"
+        src="9C8078D5-C511-44E8-BB03-04B5A167A759.png"
+        alt=""
+        draggable="false">
+    </div>
+
+  </main>
 
   <script src="wheel.js"></script>
 
