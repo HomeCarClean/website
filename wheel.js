@@ -1,25 +1,15 @@
-const wheel = document.querySelector('.wheel-frame');
+const wheelFrame = document.querySelector('.wheel-frame');
+const wheel = document.querySelector('.wheel-image');
 
-if (wheel) {
+if (wheelFrame && wheel) {
   let angle = 0;
-
-  // HOW FAR THE WHEEL SPINS PER TAP
   const spokeStep = 30;
-
-  // ROTATION CENTER CALIBRATION
-  // Adjust these until the center hub stays perfectly still while spinning.
-  const centerX = 50;
-  const centerY = 50;
 
   const tapLayer = document.createElement('div');
 
   Object.assign(tapLayer.style, {
     position: 'absolute',
-    width: '100vh',
-    height: '100vh',
-    right: '-50vh',
-    top: '50%',
-    transform: 'translateY(-50%)',
+    inset: '0',
     cursor: 'pointer',
     WebkitTapHighlightColor: 'transparent',
     WebkitTouchCallout: 'none',
@@ -31,17 +21,13 @@ if (wheel) {
   });
 
   wheel.style.transition = 'transform 0.4s ease';
+  wheel.style.transformOrigin = '50% 50%';
 
-  // Spin around the calibrated center of the actual rim.
-  wheel.style.transformOrigin = `${centerX}% ${centerY}%`;
-
-  document.querySelector('.wheel-area').appendChild(tapLayer);
+  wheelFrame.appendChild(tapLayer);
 
   tapLayer.addEventListener('click', () => {
     angle += spokeStep;
-
-    wheel.style.transform =
-      `translateY(-50%) rotate(${angle}deg)`;
+    wheel.style.transform = `rotate(${angle}deg)`;
   });
 
   tapLayer.addEventListener('contextmenu', (event) => {
