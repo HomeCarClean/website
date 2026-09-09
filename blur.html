@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wheel Pizza Dough Effect Border</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #blurLayer {
+      transform-origin: 50% 50%;
+      transition: transform .4s ease;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <svg id="blurLayer" viewBox="0 0 393 852" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <filter id="softDarkBlur" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="8"/>
+      </filter>
+
+      <!-- The original static effect, confined to the border stroke only. -->
+      <filter id="staticBorder" x="-40%" y="-40%" width="180%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency=".38" numOctaves="2" seed="23" result="noise">
+          <animate attributeName="baseFrequency" values=".36;.42;.37;.40;.36" dur="4.8s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feColorMatrix in="noise" type="saturate" values="0" result="grayNoise"/>
+        <feGaussianBlur in="grayNoise" stdDeviation="0.45" result="softNoise"/>
+        <feComposite in="softNoise" in2="SourceGraphic" operator="in"/>
+      </filter>
+    </defs>
+
+    <!-- Soft dark edge behind the border effect. -->
+    <path
+      d="
+        M 47 128
+        C 46 121 50 116 58 113
+        C 99 98 151 93 200 93
+        C 249 93 301 98 335 113
+        C 344 116 348 121 347 128
+        L 215 731
+        C 213 739 209 746 204 750
+        C 199 754 192 754 187 750
+        C 182 746 179 739 176 731
+        Z"
+      fill="none"
+      stroke="#25272b"
+      stroke-opacity=".50"
+      stroke-width="15"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      filter="url(#softDarkBlur)"/>
+
+    <!-- Static/noise effect appears only on this border; center stays transparent. -->
+    <path
+      d="
+        M 47 128
+        C 46 121 50 116 58 113
+        C 99 98 151 93 200 93
+        C 249 93 301 98 335 113
+        C 344 116 348 121 347 128
+        L 215 731
+        C 213 739 209 746 204 750
+        C 199 754 192 754 187 750
+        C 182 746 179 739 176 731
+        Z"
+      fill="none"
+      stroke="#4a4d52"
+      stroke-opacity=".78"
+      stroke-width="15"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      filter="url(#staticBorder)"/>
+  </svg>
+
+  <script>
+    const blurLayer = document.querySelector('#blurLayer');
+    let angle = 0;
+
+    blurLayer.addEventListener('click', () => {
+      angle += 30;
+      blurLayer.style.transform = `rotate(${angle}deg)`;
+    });
+  </script>
+</body>
+</html>
