@@ -7,6 +7,8 @@ if (wheelFrame && wheel) {
 
   const tapLayer = document.createElement('div');
 
+  tapLayer.className = 'wheel-tap-layer';
+
   Object.assign(tapLayer.style, {
     position: 'absolute',
     inset: '0',
